@@ -1,7 +1,14 @@
-<script setup></script>
+<script setup>
+import AppTagInput from '@/components/AppTagInput.vue'
+import { ref } from 'vue'
+
+const tags = ref([])
+</script>
 
 <template>
-  <main></main>
+  <div>
+    <AppTagInput v-model="tags"></AppTagInput>
+  </div>
 </template>
 
 <style scoped></style>

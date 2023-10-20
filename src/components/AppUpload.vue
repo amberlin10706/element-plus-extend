@@ -9,12 +9,16 @@ const props = defineProps({
   fileSizeLimit: {
     type: Number,
     default: 1024 * 1024 * 5
+  },
+  drag: {
+    type: Boolean,
+    default: false
   }
 })
 
 const emits = defineEmits(['upload'])
 
-const handleImageChange = async (uploadFile) => {
+const onchange = async (uploadFile) => {
   if (!uploadFile.raw) {
     return false
   }
@@ -51,7 +55,8 @@ const handleImageChange = async (uploadFile) => {
     :auto-upload="false"
     :show-file-list="false"
     :accept="accept.toString()"
-    :on-change="handleImageChange"
+    :on-change="onchange"
+    :drag="drag"
   >
     <slot></slot>
   </el-upload>

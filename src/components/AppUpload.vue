@@ -26,11 +26,13 @@ const onchange = async (uploadFile) => {
   if (props.accept?.length) {
     const mimeType = uploadFile.raw.type
     const isAcceptType = props.accept.some((accept) => {
-      if (accept.includes('/*')) {
-        return mimeType.startsWith(accept.replace('*', ''))
-      } else {
-        return accept === mimeType
+      const [type, subtype] = accept.split('/')
+
+      if (subtype === '*') {
+        return mimeType.startsWith(`${type}/`)
       }
+
+      return mimeType === accept
     })
 
     if (!isAcceptType) {

@@ -32,7 +32,7 @@ const onchange = async (uploadFile) => {
         return mimeType.startsWith(`${type}/`)
       }
 
-      return mimeType === accept
+      return accept.includes(mimeType)
     })
 
     if (!isAcceptType) {

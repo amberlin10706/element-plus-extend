@@ -8,5 +8,9 @@ export const MIMETypeMap = {
   png: 'image/png',
   jpg: 'image/jpeg',
   webp: 'image/webp',
-  image: 'image/*'
+  image: 'image/*',
+  mov: 'video/quicktime',
+  mp4: 'video/mp4',
+  avi: 'video/x-msvideo,video/avi',
+  wmv: 'video/x-ms-wmv'
 }

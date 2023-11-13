@@ -1,21 +1,33 @@
 <script setup>
+import { Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 
-const emits = defineEmits(['enter'])
+const props = defineProps({
+  onSearch: {
+    type: Function,
+    required: true
+  }
+})
 
 const isComposing = ref(false)
-const handleEnter = () => {
+const handleSearch = () => {
   if (isComposing.value) return
-  emits('enter')
+  props.onSearch()
 }
 </script>
 
 <template>
   <el-input
-    @keydown.enter="handleEnter"
+    @keydown.enter="handleSearch"
     @compositionstart="() => (isComposing = true)"
     @compositionend="() => (isComposing = false)"
-  ></el-input>
+    clearable
+    @clear="onSearch"
+  >
+    <template #suffix>
+      <el-icon class="cursor-pointer" @click="onSearch"><Search /></el-icon>
+    </template>
+  </el-input>
 </template>
 
 <style scoped lang="scss"></style>

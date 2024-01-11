@@ -32,11 +32,11 @@ const onchange = async (uploadFile) => {
         return mimeType.startsWith(`${type}/`)
       }
 
-      return accept.includes(mimeType)
+      return accept.split(',').includes(mimeType)
     })
 
     if (!isAcceptType) {
-      ElMessage.error('格式錯誤')
+      ElMessage.error(`格式錯誤:${mimeType}`)
       return false
     }
   }

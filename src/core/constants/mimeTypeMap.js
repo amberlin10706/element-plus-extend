@@ -12,5 +12,6 @@ export const MIMETypeMap = {
   mov: 'video/quicktime',
   mp4: 'video/mp4',
   avi: 'video/x-msvideo,video/avi',
-  wmv: 'video/x-ms-wmv'
+  wmv: 'video/x-ms-wmv',
+  zip: 'application/zip,application/zip-compressed,application/x-zip-compressed'
 }

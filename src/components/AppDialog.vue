@@ -2,28 +2,28 @@
 const props = defineProps({
   modelValue: {
     type: Boolean,
-    default: false,
+    default: false
   },
   title: {
     type: String,
-    default: '',
+    default: ''
   },
   width: {
     type: [String, Number],
-    default: '500',
+    default: '500'
   },
   confirmText: {
     type: String,
-    default: '確認',
+    default: '確認'
   },
   confirmLoading: {
     type: Boolean,
-    default: false,
+    default: false
   },
   confirmAction: {
     type: Function,
-    default: () => {},
-  },
+    default: () => {}
+  }
 })
 
 const emits = defineEmits(['update:modelValue'])

@@ -2,16 +2,16 @@
 defineProps({
   modelValue: {
     type: Boolean,
-    default: false,
+    default: false
   },
   title: {
     type: String,
-    default: '',
+    default: ''
   },
   buttonText: {
     type: String,
-    default: '確認',
-  },
+    default: '確認'
+  }
 })
 </script>
 

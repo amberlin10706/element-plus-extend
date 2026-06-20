@@ -1,25 +1,27 @@
 <script setup>
+import { toRef } from 'vue'
+
 const props = defineProps({
   type: {
     type: String,
-    default: 'text',
+    default: 'text'
   },
   title: {
     type: String,
-    default: '',
+    default: ''
   },
   itemKey: {
     type: String,
-    default: '',
+    default: ''
   },
   form: {
     type: Object,
-    required: true,
+    required: true
   },
   options: {
     type: Array,
-    default: () => [],
-  },
+    default: () => []
+  }
 })
 
 const value = toRef(props.form, props.itemKey)

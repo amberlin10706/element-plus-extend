@@ -2,24 +2,24 @@
 defineProps({
   label: {
     type: String,
-    default: '',
+    default: ''
   },
   prop: {
     type: String,
-    default: '',
+    default: ''
   },
   formatter: {
     type: Function,
-    default: (row, column, cellValue) => cellValue,
+    default: (row, column, cellValue) => cellValue
   },
   minWidth: {
     type: Number,
-    default: 0,
+    default: 0
   },
   component: {
     type: Object,
-    default: null,
-  },
+    default: null
+  }
 })
 </script>
 

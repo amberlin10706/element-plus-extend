@@ -6,6 +6,7 @@ import { UploadFilled } from '@element-plus/icons-vue'
 import AppEnterInput from '@/components/AppEnterInput.vue'
 import AppUpload from '@/components/AppUpload.vue'
 import AppDialog from '@/components/AppDialog.vue'
+import AppRocDatePicker from '@/components/AppRocDatePicker.vue'
 
 // AppEnterInput
 const keyword = ref('')
@@ -21,6 +22,11 @@ const handleUpload = (file) => {
 // AppDialog
 const dialogVisible = ref(false)
 const confirmDialog = () => new Promise((resolve) => setTimeout(resolve, 800)) // 模擬非同步送出
+
+// AppRocDatePicker
+const rocDate = ref('')
+const rocDateRange = ref('')
+const rocDateTime = ref('')
 
 // 左側導覽列：每個元件對應一個項目，點選後切換右側展示內容
 const navItems = [
@@ -38,6 +44,11 @@ const navItems = [
     key: 'AppDialog',
     name: 'AppDialog',
     desc: '含取消 / 確認按鈕，confirmAction 支援非同步並自動 loading'
+  },
+  {
+    key: 'AppRocDatePicker',
+    name: 'AppRocDatePicker',
+    desc: '封裝 el-date-picker，面板與輸入框顯示民國年（ROC）'
   }
 ]
 const activeKey = ref(navItems[0].key)
@@ -94,6 +105,31 @@ const activeKey = ref(navItems[0].key)
             <p>這是 Dialog 的內容區（slot）。</p>
           </AppDialog>
         </template>
+
+        <!-- AppRocDatePicker -->
+        <template v-else-if="activeKey === 'AppRocDatePicker'">
+          <div class="showcase__row">
+            <span class="showcase__label">日期 (date)</span>
+            <AppRocDatePicker v-model="rocDate" type="date" placeholder="選擇日期" />
+          </div>
+          <div class="showcase__row">
+            <span class="showcase__label">日期區間 (daterange)</span>
+            <AppRocDatePicker
+              v-model="rocDateRange"
+              type="daterange"
+              range-separator="至"
+              start-placeholder="開始日期"
+              end-placeholder="結束日期"
+            />
+          </div>
+          <div class="showcase__row">
+            <span class="showcase__label">日期時間 (datetime)</span>
+            <AppRocDatePicker v-model="rocDateTime" type="datetime" placeholder="選擇日期時間" />
+          </div>
+          <div class="showcase__hint">date：{{ rocDate || '(空)' }}</div>
+          <div class="showcase__hint">daterange：{{ rocDateRange || '(空)' }}</div>
+          <div class="showcase__hint">datetime：{{ rocDateTime || '(空)' }}</div>
+        </template>
       </el-card>
     </el-main>
   </el-container>
@@ -145,6 +181,19 @@ const activeKey = ref(navItems[0].key)
     color: #909399;
     font-size: 13px;
     word-break: break-all;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__label {
+    width: 160px;
+    color: #606266;
+    font-size: 13px;
   }
 }
 </style>
